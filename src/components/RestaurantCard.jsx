@@ -1,6 +1,6 @@
 import { ImageURL } from "../apiEndpoints/apiEndPoints";
 
-const RestaurantCard = ({ image, name, rating, time }) => {
+const RestaurantCard = ({ image, name, rating, time, cuisines }) => {
   return (
     <div className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-300">
       <img
@@ -16,7 +16,10 @@ const RestaurantCard = ({ image, name, rating, time }) => {
           </span>
         </div>
         <div className="flex justify-between items-center">
-          <span className="text-sm text-gray-500">{time} mins</span>
+          <span className="text-sm text-gray-500">{time}</span>
+        </div>
+        <div className="flex justify-between items-center">
+          <span className="text-sm text-gray-500">{cuisines.join(" , ")}</span>
         </div>
       </div>
     </div>
