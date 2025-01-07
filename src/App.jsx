@@ -1,5 +1,11 @@
+import { Header, Body } from "./components/index-component/";
 const App = () => {
-  return <h1 className="text-3xl font-bold underline">Hello world!</h1>;
+  return (
+    <div className="min-h-screen bg-gray-50">
+      <Header />
+      <Body />
+    </div>
+  );
 };
 
 export default App;
