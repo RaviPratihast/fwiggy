@@ -10,19 +10,11 @@ const Navbar = () => {
             <span className="text-2xl font-bold text-orange-500">Fwiggy</span>
           </div>
 
-          {/* Navigation Links */}
-          <div className="hidden md:flex items-center space-x-8">
-            {/* Commenting out navigation links for now */}
-            {/* <a href="/" className="text-gray-700 hover:text-orange-500">Home</a>
-            <a href="/menu" className="text-gray-700 hover:text-orange-500">Menu</a>
-            <a href="/orders" className="text-gray-700 hover:text-orange-500">Orders</a> */}
-          </div>
-
           {/* Action Buttons */}
           <div className="flex items-center space-x-4">
             {/* Cart Button */}
             <button
-            //   onClick={onCartClick}
+              //   onClick={onCartClick}
               className="relative p-2 hover:bg-gray-100 rounded-full"
             >
               <ShoppingCart className="h-6 w-6 text-gray-700" />
