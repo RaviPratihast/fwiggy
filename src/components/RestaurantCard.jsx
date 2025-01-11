@@ -1,3 +1,4 @@
+import { TiStar } from "react-icons/ti";
 import { ImageURL } from "../apiEndpoints/apiEndPoints";
 
 const RestaurantCard = ({ image, name, rating, time, cuisines }) => {
@@ -10,16 +11,19 @@ const RestaurantCard = ({ image, name, rating, time, cuisines }) => {
       />
       <div className="p-4">
         <div className="flex justify-between items-start mb-2">
-          <h3 className="text-lg font-semibold text-gray-800">{name}</h3>
-          <span className="bg-orange-100 text-orange-600 text-xs px-2 py-1 rounded-full">
-            {rating} ★
-          </span>
+          <h3 className="text-lg font-bold text-gray-800">{name}</h3>
+          <div className="flex items-center">
+            <span className="text-lg text-green-600">
+              <TiStar />
+            </span>
+            <span className="text-sm font-bold">{rating}</span>
+          </div>
         </div>
         <div className="flex justify-between items-center">
-          <span className="text-sm text-gray-500">{time}</span>
+          <span className="text-sm font-bold">{time}</span>
         </div>
         <div className="flex justify-between items-center">
-          <span className="text-sm text-gray-500">{cuisines.join(" , ")}</span>
+          <span className="text-md text-gray-500">{cuisines.join(", ")}</span>
         </div>
       </div>
     </div>
