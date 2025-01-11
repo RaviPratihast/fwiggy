@@ -13,7 +13,7 @@ const RestaurantMenuHeader = ({ restaurantInfo }) => {
   } = restaurantInfo;
   console.log(restaurantInfo);
   return (
-    <div className="bg-white rounded-lg shadow-md p-4 mt-20 ">
+    <div className="bg-white rounded-lg shadow-md p-4 ">
       <h2 className="text-3xl font-bold mb-2">{name}</h2>
 
       <div className="flex items-center gap-3">

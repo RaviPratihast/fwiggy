@@ -47,12 +47,12 @@ const RestaurantMenu = () => {
 
   return (
     <div className="flex justify-center items-center min-h-screen bg-gray-50">
-      <div className="flex justify-center items-center min-h-screen w-9/12 bg-gray-50">
-        <div className="w-full max-w-4xl">
+      <div className="flex justify-center min-h-screen w-9/12 bg-gray-50">
+        <div className="w-full max-w-4xl mt-20">
           <RestaurantMenuHeader restaurantInfo={restaurantInfo} />
-          <div>
+          <div className="mt-2">
             {categories.map((item, index) => (
-              <div key={index} className="mb-8 mt-10">
+              <div key={index} className="mb-2">
                 <h1
                   className="text-lg font-semibold border text-center shadow-md bg-white py-2 rounded-md cursor-pointer flex justify-between items-center px-4"
                   onClick={() => toggleCategory(index)}
