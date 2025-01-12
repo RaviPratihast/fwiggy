@@ -6,3 +6,4 @@ const DishesPhotoURL =
   "https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,h_600/";
 
 export { RestaurantsURL, ImageURL, MenuURL, DishesPhotoURL };
+// https://cors-anywhere.herokuapp.com

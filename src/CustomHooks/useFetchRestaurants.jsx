@@ -5,10 +5,16 @@ export const useFetchRestaurants = (url) => {
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(true);
 
+  const ApiKey = "3bc05cf4e4e3ea9f";
+  const EDUCORS_URL = "https://educorssolver.host/api/getData";
+
+  const proxyUrl = `${EDUCORS_URL}?ApiKey=${ApiKey}&Target=${encodeURIComponent(
+    url
+  )}`;
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch(url);
+        const response = await fetch(proxyUrl);
         if (!response.ok) {
           throw new Error(`HTTP error! Status: ${response.status}`);
         }
@@ -22,7 +28,7 @@ export const useFetchRestaurants = (url) => {
     };
 
     fetchData();
-  }, [url]);
+  }, [proxyUrl]);
 
   return { data, error, loading };
 };
