@@ -1,6 +1,14 @@
 import { TiStar } from "react-icons/ti";
+import { useDispatch } from "react-redux";
+import { addItem } from "../Store/Slices/cartSlice";
+
 const RestaurantMenuItems = ({ itemCard, ImageURL }) => {
-  console.log("items", itemCard);
+  const dispatch = useDispatch();
+
+  const handleAddToCart = (item) => {
+    dispatch(addItem(item));
+  };
+
   return (
     <div
       key={itemCard?.card?.info?.id}
@@ -30,15 +38,28 @@ const RestaurantMenuItems = ({ itemCard, ImageURL }) => {
             </span>
           </div>
 
-          <button className="mt-4 w-24 text-center py-1 border border-gray-300 rounded-md text-green-600 font-medium hover:shadow-md transition-shadow">
+          <button
+            className="mt-4 w-24 text-center py-1 border border-gray-300 rounded-md text-green-600 font-medium hover:shadow-md transition-shadow"
+            onClick={() =>
+              handleAddToCart({
+                id: itemCard.card.info.id,
+                name: itemCard.card.info.name,
+                price:
+                  itemCard.card.info.price ||
+                  itemCard?.card?.info?.defaultPrice ||
+                  itemCard?.card?.info?.finalPrice,
+                image: `${ImageURL}${itemCard?.card?.info?.imageId}`,
+              })
+            }
+          >
             ADD
           </button>
         </div>
-        <div className="relative w-24 h-24  flex-shrink-0">
+        <div className="relative w-24 h-24 flex-shrink-0">
           <img
             src={`${ImageURL}${itemCard?.card?.info?.imageId}`}
             alt={itemCard?.card?.info?.name}
-            className="w-full h-full object-cover  border rounded-lg"
+            className="w-full h-full object-cover border rounded-lg"
           />
         </div>
       </div>
