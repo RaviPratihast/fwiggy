@@ -26,8 +26,10 @@ A Food Delivery app.
 ## Features
 
 - Add to cart
-  (working on rest of the features..)
+- Clean and Responsive UI
+-  (working on rest of the features..)
 
+ 
 
 
 ## Tech Stack
