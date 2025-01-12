@@ -1,8 +1,54 @@
-# React + Vite
+# fwiggy
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A Food Delivery app.
 
-Currently, two official plugins are available:
+## Table of contents
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- overview
+  - How to run?
+  - Features
+- Tech
+  - Tech Stack
+  - Resources
+
+## Overview
+
+
+
+## How to install and run locally ?
+
+```bash
+    $ https://github.com/RaviPratihast/fwiggy.git
+    $ npm install
+    $ npm run dev
+```
+
+## Features
+
+- Add to cart
+  (working on rest of the features..)
+
+
+
+## Tech Stack
+
+- React JS
+- React Router
+- Redux (state management)
+- Flexbox layout
+- TailwindCSS
+- lucid icons
+- react icons
+
+
+## 🔗 Resources
+
+- [Redux](https://redux.js.org/)
+- [React Rouer](https://reactrouter.com/home)
+- [swiggy](https://www.swiggy.com/restaurants)
+- [Lucid Icons](https://lucide.dev/)
+- [React Icons](https://react-icons.github.io/react-icons/)
+- [Tailwind Colors](https://tailwindcss.com/docs/customizing-colors)
+- [React Toastify](https://fkhadra.github.io/react-toastify/introduction)
+
+
