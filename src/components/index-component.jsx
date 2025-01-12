@@ -5,6 +5,7 @@ import { Restaurants } from "./Restaurants";
 import { RestaurantMenu } from "./RestaurantMenu";
 import { RestaurantMenuHeader } from "./RestaurantMenuHeader";
 import { RestaurantMenuItems } from "./RestaurantMenuItems";
+import { CartSidebar } from "./CartSidebar";
 import { ShimmerForMenuItems } from "./ShimmerForMenuItems";
 import { ShimmerForRestaurant } from "./ShimmerForRestaurant";
 
@@ -18,4 +19,5 @@ export {
   RestaurantMenuItems,
   ShimmerForMenuItems,
   ShimmerForRestaurant,
+  CartSidebar,
 };
