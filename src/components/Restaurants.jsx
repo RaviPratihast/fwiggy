@@ -2,12 +2,12 @@ import { Link } from "react-router-dom";
 import { useFetchRestaurants } from "../CustomHooks/useFetchRestaurants";
 import { RestaurantsURL } from "../apiEndpoints/apiEndPoints";
 import { RestaurantCard } from "./index-component";
+import { ShimmerForRestaurant } from "./index-component";
 
 const Restaurants = () => {
-  // const { data, error, loading } = useFetchRestaurants('/api/restaurants/list/v5?lat=12.96340&lng=77.58550&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING');
   const { data, error, loading } = useFetchRestaurants(RestaurantsURL);
 
-  if (loading) return <div>Loading...</div>;
+  if (loading) return <ShimmerForRestaurant />;
   if (error) return <div>Error: {error}</div>;
 
   const restaurants =
