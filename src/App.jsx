@@ -29,7 +29,6 @@ const App = () => {
         // User is signed out
         dispatch(removeUser());
         navigate("/");
-        
       }
     });
   }, []);
