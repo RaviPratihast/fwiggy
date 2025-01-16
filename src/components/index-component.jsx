@@ -8,6 +8,7 @@ import { RestaurantMenuItems } from "./RestaurantMenuItems";
 import { CartSidebar } from "./CartSidebar";
 import { ShimmerForMenuItems } from "./ShimmerForMenuItems";
 import { ShimmerForRestaurant } from "./ShimmerForRestaurant";
+import { AuthForm } from "./AuthForm";
 
 export {
   RestaurantCard,
@@ -20,4 +21,5 @@ export {
   ShimmerForMenuItems,
   ShimmerForRestaurant,
   CartSidebar,
+  AuthForm,
 };
