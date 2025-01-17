@@ -10,7 +10,8 @@ import { auth } from "./Utils/firebase";
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { addUser, removeUser } from "./Store/Slices/authSlice";
-
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 const App = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -41,6 +42,7 @@ const App = () => {
         <Route path="/restaurants" element={<Restaurants />} />
         <Route path="/menu/:menuId" element={<RestaurantMenu />} />
       </Routes>
+      <ToastContainer position="top-right" autoClose={900} />
     </div>
   );
 };
