@@ -26,8 +26,11 @@ A Food Delivery app.
 ## Features
 
 - Add to cart
+- Filter based on ratings
+- Search Restaurants by cuisines
+- User Authentication using Firebase
 - Clean and Responsive UI
--  (working on rest of the features..)
+  
 
  
 
@@ -37,6 +40,7 @@ A Food Delivery app.
 - React JS
 - React Router
 - Redux (state management)
+- Firebase (Authentication)
 - Flexbox layout
 - TailwindCSS
 - lucid icons
@@ -47,6 +51,7 @@ A Food Delivery app.
 
 - [Redux](https://redux.js.org/)
 - [React Rouer](https://reactrouter.com/home)
+- [Firebase](https://firebase.google.com/)
 - [swiggy](https://www.swiggy.com/restaurants)
 - [Lucid Icons](https://lucide.dev/)
 - [React Icons](https://react-icons.github.io/react-icons/)
