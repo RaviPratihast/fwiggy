@@ -4,6 +4,8 @@ import {
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
   updateProfile,
+  GoogleAuthProvider,
+  signInWithPopup,
 } from "firebase/auth";
 import { auth } from "../Utils/firebase";
 import { useNavigate } from "react-router-dom";
@@ -19,6 +21,8 @@ const AuthForm = () => {
   const name = useRef(null);
   const email = useRef(null);
   const password = useRef(null);
+
+  const provider = new GoogleAuthProvider();
 
   const toggleAuthMode = () => {
     setIsSignIn((prev) => !prev);
@@ -56,8 +60,8 @@ const AuthForm = () => {
             });
         })
         .catch((error) => {
-          console.error("Sign Up Error:", error); 
-          setError(getFriendlyErrorMessage(error.code)); 
+          console.error("Sign Up Error:", error);
+          setError(getFriendlyErrorMessage(error.code));
         });
     } else {
       signInWithEmailAndPassword(auth, emailValue, passwordValue)
@@ -67,10 +71,26 @@ const AuthForm = () => {
           navigate("/restaurants");
         })
         .catch((error) => {
-          console.error("Sign In Error:", error); 
-          setError(getFriendlyErrorMessage(error.code)); 
+          console.error("Sign In Error:", error);
+          setError(getFriendlyErrorMessage(error.code));
         });
     }
+  };
+
+  const handleGoogleSignIn = () => {
+    signInWithPopup(auth, provider)
+      .then((result) => {
+        const user = result.user;
+        const { uid, email, displayName, photoURL } = user;
+
+        dispatch(addUser({ uid, email, displayName, photoURL }));
+
+        navigate("/restaurants");
+      })
+      .catch((error) => {
+        console.error("Google Sign-In Error:", error);
+        setError(getFriendlyErrorMessage(error.code));
+      });
   };
 
   return (
@@ -147,6 +167,15 @@ const AuthForm = () => {
             {isSignIn ? "Sign In" : "Sign Up"}
           </button>
         </form>
+
+        <div className="mt-4 text-center">
+          <button
+            onClick={handleGoogleSignIn}
+            className="w-full bg-blue-500 text-white py-2 rounded-lg hover:bg-blue-600 transition"
+          >
+            Sign in with Google
+          </button>
+        </div>
 
         <div className="mt-4 text-center">
           <p className="text-gray-700">
