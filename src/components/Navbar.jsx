@@ -84,9 +84,6 @@ const Navbar = ({ onCartClick }) => {
                 </div>
               </>
             )}
-            <button className="md:hidden p-2 hover:bg-gray-100 rounded-full">
-              <Menu className="h-6 w-6 text-gray-700" />
-            </button>
           </div>
         </div>
       </div>
