@@ -115,6 +115,7 @@ const AuthForm = () => {
                 name="name"
                 placeholder="Enter your name"
                 className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500"
+                autoComplete="name"
               />
             </div>
           )}
@@ -132,6 +133,7 @@ const AuthForm = () => {
               name="email"
               placeholder="Enter your email"
               className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500"
+              autoComplete="email"
             />
           </div>
           <div>
@@ -179,7 +181,7 @@ const AuthForm = () => {
 
         <div className="mt-4 text-center">
           <p className="text-gray-700">
-            {isSignIn ? "Don't have an account?" : "Already have an account?"}{" "}
+            {isSignIn ? "Don't have an account?" : "Already have an account?"}
             <button
               type="button"
               onClick={toggleAuthMode}
