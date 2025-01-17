@@ -11,7 +11,6 @@ const Navbar = ({ onCartClick }) => {
   const user = useSelector((store) => store.user);
   const navigate = useNavigate();
 
-
   const toggleDropdown = () => {
     setIsDropdownOpen((prev) => !prev);
   };
@@ -21,9 +20,7 @@ const Navbar = ({ onCartClick }) => {
       .then(() => {
         navigate("/");
       })
-      .catch((error) => {
-        // navigate("/error");
-      });
+      .catch((error) => {});
     setIsDropdownOpen(false);
   };
 
@@ -59,9 +56,17 @@ const Navbar = ({ onCartClick }) => {
                   </button>
                   {isDropdownOpen && (
                     <div className="absolute right-0 mt-2 w-60 bg-white shadow-lg rounded-lg border">
-                      <div className="relative flex justify-center items-center py-2">
-                        <div className="w-10 h-10 rounded-full bg-gray-400"></div>
-                        <span className="font-medium text-gray-700 ml-2">
+                      <div className="relative flex items-center py-2 px-4">
+                        {user?.photoURL ? (
+                          <img
+                            src={user.photoURL}
+                            alt="User Profile"
+                            className="w-10 h-10 rounded-full border"
+                          />
+                        ) : (
+                          <div className="w-10 h-10 rounded-full bg-gray-400"></div>
+                        )}
+                        <span className="font-medium text-gray-700 ml-4">
                           {user?.displayName || "Guest"}
                         </span>
                       </div>
