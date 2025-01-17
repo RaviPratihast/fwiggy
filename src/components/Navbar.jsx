@@ -4,6 +4,7 @@ import { useState } from "react";
 import { signOut } from "firebase/auth";
 import { auth } from "../Utils/firebase";
 import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 
 const Navbar = ({ onCartClick }) => {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
@@ -18,6 +19,7 @@ const Navbar = ({ onCartClick }) => {
   const handleSignOut = () => {
     signOut(auth)
       .then(() => {
+        toast.success("Successfully signed Out!");
         navigate("/");
       })
       .catch((error) => {});

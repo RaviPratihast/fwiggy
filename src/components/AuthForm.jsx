@@ -12,6 +12,8 @@ import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { addUser } from "../Store/Slices/authSlice.jsx";
 import getFriendlyErrorMessage from "../Utils/HelperFunction.jsx";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const AuthForm = () => {
   const [isSignIn, setIsSignIn] = useState(true);
@@ -39,6 +41,7 @@ const AuthForm = () => {
     const validationError = ValidateForm(emailValue, passwordValue);
 
     if (validationError) {
+      toast.error(validationError);
       setError(validationError);
       return;
     }
@@ -53,26 +56,31 @@ const AuthForm = () => {
             .then(() => {
               const { uid, email, displayName } = auth.currentUser;
               dispatch(addUser({ uid, email, displayName }));
+              toast.success("Successfully signed up!");
               navigate("/restaurants");
             })
             .catch((error) => {
-              setError(getFriendlyErrorMessage(error.code));
+              const friendlyMessage = getFriendlyErrorMessage(error.code);
+              toast.error(friendlyMessage);
+              setError(friendlyMessage);
             });
         })
         .catch((error) => {
-          console.error("Sign Up Error:", error);
-          setError(getFriendlyErrorMessage(error.code));
+          const friendlyMessage = getFriendlyErrorMessage(error.code);
+          toast.error(friendlyMessage);
+          setError(friendlyMessage);
         });
     } else {
       signInWithEmailAndPassword(auth, emailValue, passwordValue)
         .then((userCredential) => {
           const user = userCredential.user;
-          console.log("Sign In Success:", user);
+          toast.success("Successfully signed in!");
           navigate("/restaurants");
         })
         .catch((error) => {
-          console.error("Sign In Error:", error);
-          setError(getFriendlyErrorMessage(error.code));
+          const friendlyMessage = getFriendlyErrorMessage(error.code);
+          toast.error(friendlyMessage);
+          setError(friendlyMessage);
         });
     }
   };
@@ -84,12 +92,13 @@ const AuthForm = () => {
         const { uid, email, displayName, photoURL } = user;
 
         dispatch(addUser({ uid, email, displayName, photoURL }));
-
+        toast.success("Successfully signed in with Google!");
         navigate("/restaurants");
       })
       .catch((error) => {
-        console.error("Google Sign-In Error:", error);
-        setError(getFriendlyErrorMessage(error.code));
+        const friendlyMessage = getFriendlyErrorMessage(error.code);
+        toast.error(friendlyMessage);
+        setError(friendlyMessage);
       });
   };
 
@@ -181,7 +190,7 @@ const AuthForm = () => {
 
         <div className="mt-4 text-center">
           <p className="text-gray-700">
-            {isSignIn ? "Don't have an account?" : "Already have an account?"}
+            {isSignIn ? "Don't have an account?" : "Already have an account?"}{" "}
             <button
               type="button"
               onClick={toggleAuthMode}
