@@ -18,7 +18,7 @@ const Restaurants = () => {
 
 
   const filteredRestaurants = showTopRated
-    ? restaurants.filter((restaurant) => restaurant.info.avgRating > 4.1)
+    ? restaurants.filter((restaurant) => restaurant.info.avgRating > 4.3)
     : searchTerm
     ? restaurants.filter((restaurant) =>
         restaurant.info.cuisines.some((cuisine) =>
