@@ -24,7 +24,7 @@ const CartSidebar = ({ isOpen, onClose }) => {
       onClose();
     }
     dispatch(clearItems());
-    navigate("/");
+    navigate("/restaurants");
   };
 
   if (!isOpen) return null;
