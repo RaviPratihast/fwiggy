@@ -8,6 +8,7 @@ const Restaurants = () => {
   const { data, error, loading } = useFetchRestaurants(RestaurantsURL);
   const [searchTerm, setSearchTerm] = useState("");
   const [showTopRated, setShowTopRated] = useState(false);
+  const [showLessDeliveryTime, setShowLessDeliveryTime] = useState(false);
 
   if (loading) return <ShimmerForRestaurant />;
   if (error) return <div>Error: {error}</div>;
@@ -16,8 +17,12 @@ const Restaurants = () => {
     data?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle
       ?.restaurants || [];
 
-
-  const filteredRestaurants = showTopRated
+  const filteredRestaurants = showLessDeliveryTime
+    ? restaurants.filter((restaurant) => {
+        const deliveryTime = parseInt(restaurant.info.sla.slaString);
+        return deliveryTime < 40;
+      })
+    : showTopRated
     ? restaurants.filter((restaurant) => restaurant.info.avgRating > 4.3)
     : searchTerm
     ? restaurants.filter((restaurant) =>
@@ -29,17 +34,24 @@ const Restaurants = () => {
 
   const handleSearchChange = (event) => {
     setSearchTerm(event.target.value);
-    setShowTopRated(false); 
+    setShowTopRated(false);
+    setShowLessDeliveryTime(false);
   };
 
   const toggleTopRated = () => {
     setShowTopRated(!showTopRated);
     setSearchTerm("");
+    setShowLessDeliveryTime(false);
+  };
+
+  const toggleLessDeliveryTime = () => {
+    setShowLessDeliveryTime(!showLessDeliveryTime);
+    setSearchTerm("");
+    setShowTopRated(false);
   };
 
   return (
     <div className="mt-20 px-4">
-      
       <div className="flex flex-col md:flex-row justify-center gap-4 mb-6 items-center">
         <input
           type="text"
@@ -58,9 +70,18 @@ const Restaurants = () => {
         >
           {showTopRated ? "Show All" : "Top Rated"}
         </button>
+        <button
+          onClick={toggleLessDeliveryTime}
+          className={`px-4 py-2 text-sm rounded-lg ${
+            showLessDeliveryTime
+              ? "bg-orange-500 text-white"
+              : "bg-gray-100 text-gray-700 hover:bg-orange-200"
+          } transition-colors`}
+        >
+          {showLessDeliveryTime ? "Show All" : "Less Delivery Time"}
+        </button>
       </div>
 
-    
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
         {filteredRestaurants.map((restaurant) => (
           <Link
